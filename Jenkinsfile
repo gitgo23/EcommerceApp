@@ -35,5 +35,21 @@ pipeline {
             }
         }
 
+        stage('Upload to Nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'EcommerceApp', 
+                classifier: '', 
+                file: 'target/EcommerceApp.war', 
+                type: 'war']], 
+                credentialsId: 'NEXUS_CRED', 
+                groupId: 'com', 
+                nexusUrl: '34.229.186.51:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'EcommerceApp-Snapshot', 
+                version: '0.0.1-SNAPSHOT'
+            }
+        }
+
     }
 }
