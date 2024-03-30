@@ -14,11 +14,13 @@ pipeline {
 
         stage('Build with Maven') {
             steps {
-                sh '''
-                mvn clean
-                mvn test
-                mvn package
-                '''
+                dir('EcommerceApp') {
+                    sh '''
+                    mvn clean
+                    mvn test
+                    mvn package
+                    '''
+                } 
             }
         }
 
