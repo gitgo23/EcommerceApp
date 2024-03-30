@@ -22,5 +22,18 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            environment {
+                ScannerHome = tool 'sonar5.0'
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('sonarqube') {
+                        sh "${ScannerHome}/bin/sonar-scanner -Dsonar.projectKey=EcommerceApp"
+                    }
+                }
+            }
+        }
+
     }
 }
