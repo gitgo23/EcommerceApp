@@ -46,8 +46,16 @@ pipeline {
                 nexusUrl: '34.229.186.51:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
-                repository: 'EcommerceApp-Snapshot', 
-                version: '0.0.1-SNAPSHOT'
+                repository: 'EcommerceApp-release', 
+                version: '0.0.1-RELEASE'
+            }
+        }
+
+        stage('Deploy to UAT') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://3.93.69.93:8080/')], 
+                contextPath: null, 
+                war: 'target/*.war'
             }
         }
 
