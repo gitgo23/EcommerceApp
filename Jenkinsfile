@@ -17,7 +17,7 @@ pipeline {
                 sh '''
                 mvn clean
                 mvn test
-                mvm package
+                mvn package
                 '''
             }
         }
