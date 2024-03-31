@@ -32,7 +32,7 @@ pipeline {
                 echo "Analysing with Sonarqube..."
                 script {
                     dir('EcommerceApp') {
-                        def compiledClassesDir = sh(script: 'mvn help:evaluate -Dexpression=project.build.outputDirectory q -DforceStdout', returnStdout: true).trim()
+                        def compiledClassesDir = sh(script: 'mvn help:evaluate -Dexpression=project.build.outputDirectory -q -DforceStdout', returnStdout: true).trim()
                     }
 
                     withSonarQubeEnv('sonarqube') {
