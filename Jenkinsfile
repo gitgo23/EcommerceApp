@@ -45,7 +45,7 @@ pipeline {
                 type: 'war']], 
                 credentialsId: 'NEXUS_CRED', 
                 groupId: 'com', 
-                nexusUrl: '34.229.186.51:8081', 
+                nexusUrl: '35.174.185.161:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
                 repository: 'EcommerceApp-release', 
@@ -55,7 +55,7 @@ pipeline {
 
         stage('Deploy to UAT') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://3.93.69.93:8080/')], 
+                deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://18.232.93.251:8080/')], 
                 contextPath: null, 
                 war: 'target/*.war'
             }
