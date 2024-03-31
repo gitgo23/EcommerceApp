@@ -60,9 +60,11 @@ pipeline {
 
         stage('Deploy to UAT') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://18.232.93.251:8080/')], 
-                contextPath: null, 
-                war: 'target/*.war'
+                dir('EcommerceApp') {
+                    deploy adapters: [tomcat9(credentialsId: 'TOMCAT', path: '', url: 'http://18.232.93.251:8080/')], 
+                    contextPath: null, 
+                    war: 'target/*.war'
+                }
             }
         }
 
