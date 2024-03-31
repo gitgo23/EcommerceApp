@@ -31,12 +31,12 @@ pipeline {
             steps {
                 echo "Analysing with Sonarqube..."
                 script {
-                    dir('EcommerceApp') {
-                        def compiledClassesDir = sh(script: 'mvn help:evaluate -Dexpression=project.build.outputDirectory -DforceStdout', returnStdout: true).trim()
-                    }
+                    // dir('EcommerceApp') {
+                    //    def compiledClassesDir = sh(script: 'mvn help:evaluate -Dexpression=project.build.outputDirectory -q -DforceStdout', returnStdout: true).trim()
+                    //}
 
                     withSonarQubeEnv('sonarqube') {
-                        sh "${ScannerHome}/bin/sonar-scanner -Dsonar.projectKey=EcommerceApp -Dsonar.java.binaries=${compiledClassesDir}"
+                        sh "${ScannerHome}/bin/sonar-scanner -Dsonar.projectKey=EcommerceApp -Dsonar.java.binaries=target/EcommerceApp/WEB-INF/classes"
                     }
                 } 
             }
