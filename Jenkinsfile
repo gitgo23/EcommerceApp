@@ -38,7 +38,7 @@ pipeline {
                     withSonarQubeEnv('sonarqube') {
                         sh "${ScannerHome}/bin/sonar-scanner -Dsonar.projectKey=EcommerceApp -Dsonar.java.binaries=${compiledClassesDir}"
                     }
-                }
+                } 
             }
         }
 
